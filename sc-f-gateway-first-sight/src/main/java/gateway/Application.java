@@ -25,8 +25,8 @@ public class Application {
         String httpUri = "http://httpbin.org:80";
         return builder.routes()
             .route(p -> p
-                .path("/get")
-                .filters(f -> f.addRequestHeader("Hello", "World"))
+                .path("/event/**")
+                .filters(f -> f.stripPrefix(1).addRequestHeader("Hello", "World"))
                 .uri(httpUri))
             .route(p -> p
                 .host("*.hystrix.com")
